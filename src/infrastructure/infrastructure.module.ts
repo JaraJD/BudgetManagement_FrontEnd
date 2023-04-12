@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserRepository } from 'src/domain/repositories/user-repositories/user.repository';
 import { GetUserUseCase } from 'src/domain/usecases/get-user.usecase';
 import { UserImplementationRepository } from './user/user-implementation.repository';
+import { CreateUserUseCase } from 'src/domain/usecases/create-user.usecase';
 
 
 
@@ -16,13 +17,22 @@ export const getUserUseCaseProvider = {
 };
 
 
+const createUserUseCaseFactory = 
+(userRepo: UserRepository) => new CreateUserUseCase(userRepo);
+export const createUserUseCaseProvider = {
+    provide: CreateUserUseCase,
+    useFactory: createUserUseCaseFactory,
+    deps: [UserRepository],
+};
+
 
 @NgModule({
   declarations: [],
   providers: [
     getUserUseCaseProvider,
         { provide: UserRepository, useClass: UserImplementationRepository},
-
+    createUserUseCaseProvider,
+        { provide: UserRepository, useClass: UserImplementationRepository}
   ],
   imports: [
     CommonModule,

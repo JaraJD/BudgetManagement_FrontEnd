@@ -15,11 +15,11 @@ export class UserImplementationRepository extends UserRepository {
     }
 
     GetUserAsync(userId: string):Observable<UserModel>{
-        return this.http.get<UserModel>('https://localhost:7028/api/User/GetUser?id='+userId)
+        return this.http.get<UserModel>('https://localhost:7028/api/User/GetUser?id='+userId);
     }
 
     override CreateUserAsync(user: UserCreateModel): Observable<string> {
-        throw new Error("Method not implemented.");
+        return this.http.post<string>('https://localhost:7028/api/User', user);
     }
     override UpdateUserAsync(user: UserUpdateModel): Observable<string> {
         throw new Error("Method not implemented.");
