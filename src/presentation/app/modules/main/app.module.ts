@@ -5,6 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './pages/app/app.component';
 import { InfrastructureModule } from 'src/infrastructure/infrastructure.module';
 import { IndexComponent } from './pages/index/index.component';
+import { environment } from '../../../../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -14,7 +19,9 @@ import { IndexComponent } from './pages/index/index.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    InfrastructureModule
+    InfrastructureModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
