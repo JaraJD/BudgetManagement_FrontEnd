@@ -1,5 +1,5 @@
 export interface UserCreateModel {
-    name : string,
-    email : string,
-    fireBaseId : string
+    name : string | null,
+    email : string | null,
+    fireBaseId : string | null
 }

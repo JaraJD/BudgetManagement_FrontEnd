@@ -4,31 +4,31 @@
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
             <h5 class="card-title text-center mb-5 fw-light fs-5">Iniciar sesion</h5>
-            <form id="usuarioForm" (ngSubmit)="entrar()" [formGroup]="usuarioForm">
+            <form id="usuarioForm" (ngSubmit)="enter()" [formGroup]="usuarioForm">
               
               <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="correo">
-                <label for="floatingInput">Correo Electronico</label>
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email">
+                <label for="floatingInput">Email</label>
               </div>
 
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="contrasenia">
-                <label for="floatingPassword">Contraseña</label>
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
+                <label for="floatingPassword">Password</label>
               </div>
   
               <div class="d-grid mb-2">
-                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit" form="usuarioForm" [disabled]="usuarioForm.invalid">Iniciar sesion</button>
+                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit" form="usuarioForm" [disabled]="usuarioForm.invalid">Sign In</button>
               </div>
 
               <div class="d-grid">
-                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="button" [routerLink]="['../register']">Registrarse</button>
+                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="button" [routerLink]="['../register']">Register</button>
               </div>
 
               <hr class="my-4">
 
               <div class="d-grid mb-2">
                 <button class="btn btn-google btn-login text-uppercase fw-bold" type="button" (click)="auth()">
-                  <i class="fab fa-google me-2"></i> Iniciar con Google
+                  <i class="fab fa-google me-2"></i> Sign in with Google
                 </button>
               </div>
               

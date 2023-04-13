@@ -10,5 +10,5 @@ export abstract class UserRepository {
 
     abstract DeleteUserAsync(userId: string) : Observable<string>
 
-    abstract GetUserAsync(userId: string) : Observable<UserModel>
+    abstract GetUserAsync(userId: string | null) : Observable<UserModel>
 }

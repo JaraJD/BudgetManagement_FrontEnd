@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../../security/services/auth/auth.service';
 
 @Component({
   selector: 'BudgetApp-header',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
+  constructor(private readonly authServive: AuthService) {
+  }
+
+  logout(): void{
+    this.authServive.SignOut();
+  }
 
 }

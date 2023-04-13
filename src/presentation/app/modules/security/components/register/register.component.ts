@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserCreateModel } from 'src/domain/models/user-model/user-create.model';
+import { UserModel } from 'src/domain/models/user-model/user.model';
 import { CreateUserUseCase } from 'src/domain/usecases/user-usecase/create-user.usecase';
+import { GetUserUseCase } from 'src/domain/usecases/user-usecase/get-user.usecase';
 
 @Component({
   selector: 'BudgetApp-register',
@@ -13,7 +15,7 @@ export class RegisterComponent {
   usuarioForm: FormGroup;
   usertocreate : UserCreateModel;
 
-  constructor(private userCreate: CreateUserUseCase){
+  constructor(private userCreate: CreateUserUseCase, private userGet : GetUserUseCase){
     this.usertocreate = {
       name: "",
       email: "",
@@ -26,7 +28,7 @@ export class RegisterComponent {
     });
   }
 
-  registrar(){
+  register(){
     console.log(this.usuarioForm.value)
     console.log(this.usuarioForm.get('user')?.value)
     console.log(this.usuarioForm.get('email')?.value)
@@ -34,6 +36,7 @@ export class RegisterComponent {
     this.usertocreate.name = this.usuarioForm.get('user')?.value;
     console.log(this.usertocreate)
 
+    this.getUser(this.usuarioForm.get('user')?.value);
 
     this.userCreate.execute(this.usertocreate).subscribe({
       next: user => {
@@ -45,5 +48,9 @@ export class RegisterComponent {
 
 
     //this.authService.SignUp(this.usuarioForm.get('correo')?.value, this.usuarioForm.get('contrasenia')?.value);
+  }
+
+  getUser(id: string){
+    this.userGet.execute(id).subscribe((res) => console.log(res))
   }
 }

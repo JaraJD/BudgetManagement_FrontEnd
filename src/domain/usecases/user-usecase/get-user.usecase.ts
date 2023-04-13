@@ -8,7 +8,7 @@ export class GetUserUseCase implements UseCase<string, UserModel>{
 
     constructor(private userRepository: UserRepository){}
 
-    execute(userId: string): Observable<UserModel> {
+    execute(userId: string | null): Observable<UserModel> {
         return this.userRepository.GetUserAsync(userId);
     }
 }

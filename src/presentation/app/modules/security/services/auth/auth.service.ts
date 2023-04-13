@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import * as auth from 'firebase/auth';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +22,10 @@ export class AuthService {
         console.log(result);
         localStorage.setItem('user', JSON.stringify(result.user));
         localStorage.setItem('uid', result.user?.uid ?? '');
-        localStorage.setItem('correo', result.user?.email ?? '');
+        localStorage.setItem('email', result.user?.email ?? '');
         this.afAuth.authState.subscribe((user) => {
           if (user) {
-            this.router.navigate(['tareas']);
+            this.router.navigate(['home']);
           }
         });
       })
@@ -43,7 +44,7 @@ export class AuthService {
         console.log(result);
         localStorage.setItem('user', JSON.stringify(result.user));
         localStorage.setItem('uid', result.user?.uid ?? '');
-        localStorage.setItem('correo', result.user?.email ?? '');
+        localStorage.setItem('email', result.user?.email ?? '');
       })
       .catch((error) => {
         window.alert(error.message);
@@ -61,7 +62,7 @@ export class AuthService {
    // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      this.router.navigate(['tareas']);
+      this.router.navigate(['home']);
     });
   }
   // Auth logic to run auth providers
@@ -69,11 +70,12 @@ export class AuthService {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.router.navigate(['tareas']);
+        this.router.navigate(['home']);
         console.log(result);
         localStorage.setItem('user', JSON.stringify(result.user));
         localStorage.setItem('uid', result.user?.uid ?? '');
-        localStorage.setItem('correo', result.user?.email ?? '');
+        localStorage.setItem('displayName', result.user?.displayName ?? '');
+        localStorage.setItem('email', result.user?.email ?? '');
       })
       .catch((error) => {
         window.alert(error);
@@ -85,9 +87,9 @@ export class AuthService {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       localStorage.removeItem('uid');
-      localStorage.removeItem('correo');
+      localStorage.removeItem('email');
       localStorage.removeItem('token');
-      this.router.navigate(['']);
+      this.router.navigate(['security']);
     });
   }
 }
