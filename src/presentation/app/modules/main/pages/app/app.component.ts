@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GetUserUseCase } from 'src/domain/usecases/get-user.usecase';
+import { GetUserUseCase } from 'src/domain/usecases/user-usecase/get-user.usecase';
 
 @Component({
   selector: 'BudgetApp-root',

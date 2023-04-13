@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { UserRepository } from 'src/domain/repositories/user-repositories/user.repository';
-import { GetUserUseCase } from 'src/domain/usecases/get-user.usecase';
+import { GetUserUseCase } from 'src/domain/usecases/user-usecase/get-user.usecase';
 import { UserImplementationRepository } from './user/user-implementation.repository';
-import { CreateUserUseCase } from 'src/domain/usecases/create-user.usecase';
+import { CreateUserUseCase } from 'src/domain/usecases/user-usecase/create-user.usecase';
 
 
 

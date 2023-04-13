@@ -18,7 +18,7 @@ export class UserImplementationRepository extends UserRepository {
         return this.http.get<UserModel>('https://localhost:7028/api/User/GetUser?id='+userId);
     }
 
-    override CreateUserAsync(user: UserCreateModel): Observable<string> {
+    CreateUserAsync(user: UserCreateModel): Observable<string> {
         return this.http.post<string>('https://localhost:7028/api/User', user);
     }
     override UpdateUserAsync(user: UserUpdateModel): Observable<string> {
