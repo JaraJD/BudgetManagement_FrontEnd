@@ -8,8 +8,11 @@ const routes: Routes = [
     component : MainHomeComponent,
     children: [
       {
-        path: 'prueba',
-        component: MainHomeComponent
+        path: 'activity', // localhost:4200/home/security
+        loadChildren: () =>
+          import('../activity-log/activity-log.module').then(
+            (m) => m.ActivityLogModule
+        )
       },
       {
         path: '**',

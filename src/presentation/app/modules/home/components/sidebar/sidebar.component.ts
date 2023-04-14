@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
+  user : string | null = localStorage.getItem('displayName');
 
 }
