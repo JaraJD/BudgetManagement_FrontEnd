@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import * as auth from 'firebase/auth';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,12 @@ export class AuthService {
         });
       })
       .catch((error) => {
-        window.alert(error.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error,
+        })
+       // window.alert(error.message);
       });
   }
   // Sign up with email/password
@@ -44,7 +50,12 @@ export class AuthService {
         this.router.navigate(['home']);
       })
       .catch((error) => {
-        window.alert(error.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error,
+        })
+        //window.alert(error.message);
       });
       
   }
@@ -68,7 +79,12 @@ export class AuthService {
         localStorage.setItem('email', result.user?.email ?? '');
       })
       .catch((error) => {
-        window.alert(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error,
+        })
+        //window.alert(error);
       });
   }
 
