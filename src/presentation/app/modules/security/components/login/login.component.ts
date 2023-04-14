@@ -13,7 +13,6 @@ import { UserModel } from 'src/domain/models/user-model/user.model';
 })
 export class LoginComponent {
   usuarioForm: FormGroup;
-  userid : string | null = '';
   usertocreate : UserCreateModel;
   userDataBase : UserModel;
 
@@ -49,11 +48,8 @@ export class LoginComponent {
 
 
   auth(): void{
-    this.authService.GoogleAuth().then((result) => {
-      this.userid = localStorage.getItem('uid');
-      this.getUser(this.userid);
-
-
+    this.authService.GoogleAuth().then(() => {
+      this.getUser(localStorage.getItem('uid'));
     });
     
   }

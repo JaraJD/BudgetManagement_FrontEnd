@@ -38,25 +38,15 @@ export class AuthService {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        /* Call the SendVerificaitonMail() function when new user sign 
-        up and returns promise */
-        this.SendVerificationMail();
-        console.log(result);
         localStorage.setItem('user', JSON.stringify(result.user));
         localStorage.setItem('uid', result.user?.uid ?? '');
         localStorage.setItem('email', result.user?.email ?? '');
+        this.router.navigate(['home']);
       })
       .catch((error) => {
         window.alert(error.message);
       });
-  }
-  // Send email verfificaiton when new user sign up
-  SendVerificationMail() {
-    return this.afAuth.currentUser
-      .then((u: any) => u.sendEmailVerification())
-      .then(() => {
-        this.router.navigate(['verify-email-address']);
-      });
+      
   }
 
    // Sign in with Google
@@ -87,6 +77,7 @@ export class AuthService {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       localStorage.removeItem('uid');
+      localStorage.removeItem('displayName');
       localStorage.removeItem('email');
       localStorage.removeItem('token');
       this.router.navigate(['security']);

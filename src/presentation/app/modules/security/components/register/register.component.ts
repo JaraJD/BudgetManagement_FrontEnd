@@ -4,6 +4,8 @@ import { UserCreateModel } from 'src/domain/models/user-model/user-create.model'
 import { UserModel } from 'src/domain/models/user-model/user.model';
 import { CreateUserUseCase } from 'src/domain/usecases/user-usecase/create-user.usecase';
 import { GetUserUseCase } from 'src/domain/usecases/user-usecase/get-user.usecase';
+import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'BudgetApp-register',
@@ -15,11 +17,14 @@ export class RegisterComponent {
   usuarioForm: FormGroup;
   usertocreate : UserCreateModel;
 
-  constructor(private userCreate: CreateUserUseCase, private userGet : GetUserUseCase){
+  constructor(private readonly authService: AuthService,
+              private userCreate: CreateUserUseCase,
+              private userGet : GetUserUseCase,
+              private router: Router){
     this.usertocreate = {
       name: "",
       email: "",
-      fireBaseId: "prueba2"
+      fireBaseId: ""
     }
     this.usuarioForm = new FormGroup({
       user: new FormControl<string>('', [Validators.required, Validators.minLength(1)]),
@@ -29,28 +34,39 @@ export class RegisterComponent {
   }
 
   register(){
-    console.log(this.usuarioForm.value)
-    console.log(this.usuarioForm.get('user')?.value)
-    console.log(this.usuarioForm.get('email')?.value)
-    this.usertocreate.email = this.usuarioForm.get('email')?.value;
-    this.usertocreate.name = this.usuarioForm.get('user')?.value;
-    console.log(this.usertocreate)
+    this.authService.SignUp(this.usuarioForm.get('email')?.value, this.usuarioForm.get('password')?.value).then((res) => {
+      this.validate(localStorage.getItem('uid'));
+    });
+    this.router.navigate(["home"]);
+  }
 
-    this.getUser(this.usuarioForm.get('user')?.value);
+  validate(id: string | null){
+    this.userGet.execute(id).subscribe({
+      next: user => {
+        console.log(user)
+        if(user == null){
+          this.create()
+        }
+      },
+      error : err => console.log(err),
+      complete : () => {console.log(' getUser complete')}
+    })
+  }
 
+
+  create(){
+    this.usertocreate = {
+      name: this.usuarioForm.get('user')?.value,
+      email: localStorage.getItem('email'),
+      fireBaseId: localStorage.getItem('uid')
+    }
+    console.log(this.usertocreate);
     this.userCreate.execute(this.usertocreate).subscribe({
       next: user => {
         console.log(user)
       },
       error: err => console.log(err),
-      complete : () => {console.log('complete')}
+      complete : () => {console.log('register complete')}
     });
-
-
-    //this.authService.SignUp(this.usuarioForm.get('correo')?.value, this.usuarioForm.get('contrasenia')?.value);
-  }
-
-  getUser(id: string){
-    this.userGet.execute(id).subscribe((res) => console.log(res))
   }
 }
