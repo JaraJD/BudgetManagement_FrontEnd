@@ -23,15 +23,8 @@ export class TransactionComponent {
   }
 
 
-  ngOnInit(): void {
-    this.transactionGet.execute('user1').subscribe({
-      next: transaction => (this.transactions = transaction)
-    });
+  create(){
     
-  }
-
-  getuser(){
-    this.transactionGet.execute('user1').subscribe( result => console.log(result));
   }
 
   getCategory(){

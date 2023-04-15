@@ -15,8 +15,11 @@ const routes: Routes = [
         component: BudgetComponent
       },
       {
-        path: 'transaction',
-        component: TransactionComponent
+        path: 'transaction', // localhost:4200/home/activity/transaction
+        loadChildren: () =>
+          import('../activity-log/pages/transaction/transaction.module').then(
+            (m) => m.TransactionModule
+        )
       },
       {
         path: 'history',

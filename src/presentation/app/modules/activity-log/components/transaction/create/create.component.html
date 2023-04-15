@@ -1,0 +1,66 @@
+<h1 class="text-center">
+    Crear tarea
+</h1>
+<form class="row g-3" id="tareaForm" (ngSubmit)="create()" [formGroup]="tareaForm">
+
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" placeholder="Leave a comment here" formControlName="dia">
+        <label for="floatingTextarea">Dia</label>
+        <span class="form-text text-danger mensajeAlert" *ngIf="tareaForm.get('dia')?.hasError('required') && tareaForm.get('dia')?.touched ">
+            El dia es requerido
+        </span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" formControlName="title"></textarea>
+        <label for="floatingTextarea">Titulo </label>
+        <span class="form-text text-danger mensajeAlert" *ngIf="tareaForm.get('title')?.hasError('required') && tareaForm.get('title')?.touched ">
+            El titulo es requerido
+        </span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea1" formControlName="description"></textarea>
+        <label for="floatingTextarea">Descripcion </label>
+        <span class="form-text text-danger mensajeAlert" *ngIf="tareaForm.get('description')?.hasError('required') && tareaForm.get('description')?.touched ">
+            La descripcion es requerida
+        </span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" formControlName="responsible"></textarea>
+        <label for="floatingTextarea">Responsable </label>
+        <span class="form-text text-danger mensajeAlert" *ngIf="tareaForm.get('responsible')?.hasError('required') && tareaForm.get('responsible')?.touched ">
+            El responsable es requerido
+        </span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="priority">
+        
+        <option value="Alta">Alta</option>
+        <option value="Media">Media</option>
+        <option value="Baja">Baja</option>
+        </select>
+        <label for="floatingSelect">Seleccione la prioridad</label>
+        <span class="form-text text-danger mensajeAlert" *ngIf="tareaForm.get('priority')?.hasError('required') && tareaForm.get('priority')?.touched ">
+            La prioridad es requerida
+        </span>
+    </div>
+    
+    <div class="form-floating mb-3">
+        <select class="form-select"  type="boolean" id="floatingSelect2" aria-label="Floating label select example" formControlName="isCompleted">
+        
+        <option value="false">Pendiente</option>
+        <option value="true">Completada</option>
+        </select>
+        <label for="floatingSelect">Seleccione el estado de la tarea</label>
+        <span class="form-text text-danger mensajeAlert" *ngIf="tareaForm.get('isCompleted')?.hasError('required') && tareaForm.get('isCompleted')?.touched ">
+            El estado es requerido
+        </span>
+    </div>
+
+</form>
+<div class="col-12">
+    <button class="btn btn-primary" type="submit" form="tareaForm" [disabled]="tareaForm.invalid">Crear Tarea</button>
+</div>

@@ -3,7 +3,7 @@ import { CategoryModel } from "../../category.model";
 
 export interface TransactionModel {
     id: number,
-    date: Date,
+    date: string,
     type: string,
     amount: number,
     description: string,

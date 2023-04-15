@@ -5,8 +5,11 @@ import { TransactionComponent } from './pages/transaction/transaction.component'
 import { ActivityLogRoutingModule } from './activity-log-routing.module';
 import { ActivityMainComponent } from './pages/activity-main/activity-main.component';
 import { HistoryComponent } from './pages/history/history.component';
-import { ListComponent } from './components/list/list.component';
+import { ListComponent } from './components/transaction/list/list.component';
 import { FormatDatePipe } from './pipes/format-date/format-date.pipe';
+import { ListUserComponent } from './components/transaction/list-user/list-user.component';
+import { CreateComponent } from './components/transaction/create/create.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,10 +20,14 @@ import { FormatDatePipe } from './pipes/format-date/format-date.pipe';
     ActivityMainComponent,
     HistoryComponent,
     ListComponent,
-    FormatDatePipe
+    FormatDatePipe,
+    ListUserComponent,
+    CreateComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     ActivityLogRoutingModule
   ]
 })

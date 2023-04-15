@@ -1,5 +1,12 @@
-<BudgetApp-list [transactions]="transactions"></BudgetApp-list>
-<!-- <button type="button" class="btn btn-secondary" (click)="getuser()">Getuser</button>
-<button type="button" class="btn btn-secondary" (click)="getDate()">GetDate</button>
-<button type="button" class="btn btn-secondary" (click)="getCategory()">GetCategory</button>
-<button type="button" class="btn btn-secondary" (click)="getType()">GetType</button> -->
+<div class="container ps-1 ms-1 pe-0 me-0">
+    <div class="header pe-1 me-3">
+        <button type="button" class="btn btn-secondary" (click)="create()">Create</button>
+        <button type="button" class="btn btn-secondary" routerLink="list">Get All</button>
+        <hr>
+    </div>
+    
+    
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>
