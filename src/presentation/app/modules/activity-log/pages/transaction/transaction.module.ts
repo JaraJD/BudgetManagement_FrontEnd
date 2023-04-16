@@ -6,6 +6,7 @@ import { ListUserComponent } from './list-user/list-user.component';
 import { CreateComponent } from './create/create.component';
 import { ListComponent } from '../../components/transaction/list/list.component';
 import { FormatDatePipe } from '../../pipes/format-date/format-date.pipe';
+import { BudgetRoutingModule } from '../budget/budget-routing.module';
 
 
 
@@ -20,7 +21,8 @@ import { FormatDatePipe } from '../../pipes/format-date/format-date.pipe';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    TransactionRoutingModule
+    TransactionRoutingModule,
+    BudgetRoutingModule
   ]
 })
 export class TransactionModule { }
