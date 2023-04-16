@@ -63,7 +63,7 @@ export class LoginComponent {
         }
       },
       error : err => console.log(err),
-      complete : () => {console.log(' getUser complete')}
+      complete : () => {console.log('getUser complete')}
     })
   }
 

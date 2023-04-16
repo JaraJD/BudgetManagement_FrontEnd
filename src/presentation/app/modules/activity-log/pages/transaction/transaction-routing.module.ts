@@ -1,7 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { TransactionComponent } from "./transaction.component";
-import { ListUserComponent } from "../../components/transaction/list-user/list-user.component";
+import { TransactionComponent } from "./transaction-main/transaction.component";
+import { ListUserComponent } from "./list-user/list-user.component";
+import { CreateComponent } from "./create/create.component";
 
 const routes: Routes = [
     {
@@ -11,6 +12,10 @@ const routes: Routes = [
         {
           path: 'list',
           component: ListUserComponent
+        },
+        {
+          path: 'create',
+          component: CreateComponent
         },
         {
           path: '**',

@@ -8,15 +8,17 @@ import { GetTransactionByUserUseCase } from 'src/domain/usecases/activity-log-us
   styleUrls: ['./list-user.component.scss']
 })
 export class ListUserComponent {
+  userId : string | null;
 
   transactions : TransactionModel[];
 
   constructor(private transactionGet : GetTransactionByUserUseCase){
+    this.userId = localStorage.getItem('uid');
     this.transactions = new Array<TransactionModel>();
   }
 
   ngOnInit(): void {
-    this.transactionGet.execute('user1').subscribe({
+    this.transactionGet.execute(this.userId).subscribe({
       next: transaction => (this.transactions = transaction, console.log(transaction))
     });
     
