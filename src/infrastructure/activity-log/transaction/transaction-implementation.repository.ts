@@ -5,7 +5,7 @@ import { CreateTransactionModel } from "src/domain/models/activity-log-model/tra
 import { UpdateTransactionModel } from "src/domain/models/activity-log-model/transaction-model/commands/update-transaction.model";
 import { TransactionModel } from "src/domain/models/activity-log-model/transaction-model/queries/transaction.model";
 import { TransactionRepository } from "src/domain/repositories/activity-log-repositories/transaction.repository";
-
+import { environment } from 'src/environments/environment';
 @Injectable({
     providedIn: 'root',
 })
@@ -16,24 +16,24 @@ export class TransactionImplementationRepository extends TransactionRepository {
     }
 
     CreateTransactionAsync(transaction: CreateTransactionModel): Observable<string> {
-        return this.http.post<string>('https://localhost:7264/api/Transaction', transaction);
+        return this.http.post<string>(`${environment.url_backend_activity}/Transaction`, transaction);
     }
     UpdateTransactionAsync(transaction: UpdateTransactionModel): Observable<string> {
-        return this.http.put<string>('https://localhost:7264/api/Transaction', transaction);
+        return this.http.put<string>(`${environment.url_backend_activity}/Transaction`, transaction);
     }
     DeleteTransactionAsync(id: number): Observable<string> {
-        return this.http.delete<string>('https://localhost:7264/api/Transaction?id='+ id);
+        return this.http.delete<string>(`${environment.url_backend_activity}/Transaction?id=${id}`);
     }
     GetTransactionByIdAsync(user: string): Observable<TransactionModel[]> {
-        return this.http.get<TransactionModel[]>('https://localhost:7264/api/Transaction/'+user);
+        return this.http.get<TransactionModel[]>(`${environment.url_backend_activity}/Transaction/${user}`);
     }
     GetTransactionByDateAsync(params: { user: string; date: string; }): Observable<TransactionModel[]> {
-        return this.http.get<TransactionModel[]>('https://localhost:7264/api/Transaction/Date/'+params.user+'/'+params.date);
+        return this.http.get<TransactionModel[]>(`${environment.url_backend_activity}/Transaction/Date/${params.user}/${params.date}`);
     }
     GetTransactionByTypeAsync(params: { user: string; type: string; }): Observable<TransactionModel[]> {
-        return this.http.get<TransactionModel[]>('https://localhost:7264/api/Transaction/Type/'+params.user+'/'+params.type);
+        return this.http.get<TransactionModel[]>(`${environment.url_backend_activity}/Transaction/Type/${params.user}/${params.type}`);
     }
     GetTransactionByCategoryAsync(params: { user: string; category: number; }): Observable<TransactionModel[]> {
-        return this.http.get<TransactionModel[]>('https://localhost:7264/api/Transaction/Category/'+params.user+'/'+params.category);
+        return this.http.get<TransactionModel[]>(`${environment.url_backend_activity}/Transaction/Category/${params.user}/${params.category}`);
     }
 }
