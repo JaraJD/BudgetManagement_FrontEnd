@@ -6,7 +6,7 @@ import { TargetSavingModel } from "src/domain/models/financial-goal-model/target
 export abstract class TargetSavingRepository {
     abstract CreateTargetSavingAsync( saving : CreateTargetSavingModel) : Observable<number>
     abstract UpdateTargetSavingAsync( saving : UpdateTargetSavingModel) : Observable<number>
-    abstract DeleteTargetSavingAsync( id : number) : Observable<string>
+    abstract DeleteTargetSavingAsync( id : number) : Observable<number>
     abstract GetTargetSavingByIdAsync( user : string | null) : Observable<TargetSavingModel[]>
     abstract GetTargetSavingByStateAsync( params : {user : string, state : string}) : Observable<TargetSavingModel[]>
 }
