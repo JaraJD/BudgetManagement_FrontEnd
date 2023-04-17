@@ -12,6 +12,10 @@ import { GetTransactionByDateUseCase } from 'src/domain/usecases/activity-log-us
 import { TransactionImplementationRepository } from './activity-log/transaction/transaction-implementation.repository';
 import { GetTransactionByTypeUseCase } from 'src/domain/usecases/activity-log-usecase/transaction-usecase/queries/getType-transaction.usecase';
 import { GetTransactionByCategoryUseCase } from 'src/domain/usecases/activity-log-usecase/transaction-usecase/queries/getCategory-transaction.usecase';
+import { BudgetRepository } from 'src/domain/repositories/activity-log-repositories/budget.repository';
+import { CreateBudgetUseCase } from 'src/domain/usecases/activity-log-usecase/budget-usecase/commands/create-budget.usecase';
+import { GetBudgetByUserUseCase } from 'src/domain/usecases/activity-log-usecase/budget-usecase/queries/getUser-budget.usecase';
+import { BudgetImplementationRepository } from './activity-log/budget/budget-implementation.repository';
 
 
 
@@ -76,6 +80,25 @@ export const getTransactionByCategoryUseCaseProvider = {
 };
 
 
+
+
+
+const createBudgetUseCaseFactory = 
+(budgetRepo: BudgetRepository) => new CreateBudgetUseCase(budgetRepo);
+export const createBudgetUseCaseProvider = {
+    provide: CreateBudgetUseCase,
+    useFactory: createBudgetUseCaseFactory,
+    deps: [BudgetRepository],
+};
+
+const getBudgetUseCaseFactory = 
+(budgetRepo: BudgetRepository) => new GetBudgetByUserUseCase(budgetRepo);
+export const getBudgetUseCaseProvider = {
+    provide: GetBudgetByUserUseCase,
+    useFactory: getBudgetUseCaseFactory,
+    deps: [BudgetRepository],
+};
+
 @NgModule({
   declarations: [],
   providers: [
@@ -93,6 +116,10 @@ export const getTransactionByCategoryUseCaseProvider = {
         {provide: TransactionRepository, useClass: TransactionImplementationRepository},
     getTransactionByCategoryUseCaseProvider,
         {provide: TransactionRepository, useClass: TransactionImplementationRepository},
+    createBudgetUseCaseProvider,
+        {provide: BudgetRepository, useClass: BudgetImplementationRepository},
+    getBudgetUseCaseProvider,
+        {provide: BudgetRepository, useClass: BudgetImplementationRepository},
   ],
   imports: [
     CommonModule,

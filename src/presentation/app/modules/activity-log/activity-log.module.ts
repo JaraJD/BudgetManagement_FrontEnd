@@ -5,8 +5,6 @@ import { TransactionComponent } from './pages/transaction/transaction-main/trans
 import { ActivityLogRoutingModule } from './activity-log-routing.module';
 import { ActivityMainComponent } from './pages/activity-main/activity-main.component';
 import { HistoryComponent } from './pages/history/history.component';
-import { TransactionModule } from './pages/transaction/transaction.module';
-import { BudgetModule } from './pages/budget/budget.module';
 
 
 
@@ -16,12 +14,9 @@ import { BudgetModule } from './pages/budget/budget.module';
     TransactionComponent,
     ActivityMainComponent,
     HistoryComponent,
-    
   ],
   imports: [
     CommonModule,
-    TransactionModule,
-    BudgetModule,
     ActivityLogRoutingModule
   ]
 })

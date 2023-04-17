@@ -2,7 +2,7 @@ import { BudgetExpenseModel } from '../../budget-expense-model/queries/budget-ex
 export interface BudgetModel {
     id : number,
     name: string,
-    targetMonth: Date,
+    targetMonth: string,
     balance: number,
     monthlyTotal: number,
     state: string,
