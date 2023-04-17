@@ -8,10 +8,17 @@ const routes: Routes = [
     component : MainHomeComponent,
     children: [
       {
-        path: 'activity', // localhost:4200/home/security
+        path: 'activity', // localhost:4200/home/activity
         loadChildren: () =>
           import('../activity-log/activity-log.module').then(
             (m) => m.ActivityLogModule
+        )
+      },
+      {
+        path: 'financialGoal', // localhost:4200/home/financialGoal
+        loadChildren: () =>
+          import('../financial-goal/financial-goal.module').then(
+            (m) => m.FinancialGoalModule
         )
       },
       {

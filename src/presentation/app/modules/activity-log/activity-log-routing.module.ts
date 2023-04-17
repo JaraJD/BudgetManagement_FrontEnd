@@ -25,10 +25,6 @@ const routes: Routes = [
         )
       },
       {
-        path: 'history',
-        component: HistoryComponent
-      },
-      {
         path: '**',
         redirectTo: 'budget'
       }

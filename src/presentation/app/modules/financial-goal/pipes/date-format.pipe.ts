@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'formatDateMonth'
+  name: 'dateFormat'
 })
-export class FormatDateMonthPipe implements PipeTransform {
+export class DateFormatPipe implements PipeTransform {
 
   transform(date: string): string {
-    const smallDate = date.substring(0, 7);
+    const smallDate = date.substring(0, 10);
     return smallDate;
   }
 

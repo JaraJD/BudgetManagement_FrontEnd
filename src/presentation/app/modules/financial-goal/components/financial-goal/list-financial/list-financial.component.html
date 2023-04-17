@@ -1,0 +1,18 @@
+<table class="table table-dark table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Amount</th>
+        <th scope="col">State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let saving of savings">
+        <td>{{saving.startDate | dateFormat}}</td>
+        <td>{{saving.endDate | dateFormat }}</td>
+        <td>{{saving.targetAmount}}</td>
+        <td>{{saving.stateSaving}}</td>
+      </tr>
+    </tbody>
+  </table>

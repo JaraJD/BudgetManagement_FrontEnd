@@ -9,7 +9,7 @@ describe('FormatDateMonthPipe', () => {
   it("test_happy_path_valid_date_format", () => {
     // Arrange
     const pipe = new FormatDateMonthPipe();
-    const date = "2022-01-01";
+    const date = "2022-01-11";
 
     // Act
     const result = pipe.transform(date);

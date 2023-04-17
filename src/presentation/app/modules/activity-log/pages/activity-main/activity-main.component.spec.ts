@@ -17,7 +17,14 @@ describe('ActivityMainComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+      // Tests that an instance of ActivityMainComponent can be created. 
+      it("test_creating_instance", () => {
+        // Arrange
+        const activityMainComponent = new ActivityMainComponent();
+
+        // Act
+
+        // Assert
+        expect(activityMainComponent).toBeDefined();
+    });
 });

@@ -16,6 +16,10 @@ import { BudgetRepository } from 'src/domain/repositories/activity-log-repositor
 import { CreateBudgetUseCase } from 'src/domain/usecases/activity-log-usecase/budget-usecase/commands/create-budget.usecase';
 import { GetBudgetByUserUseCase } from 'src/domain/usecases/activity-log-usecase/budget-usecase/queries/getUser-budget.usecase';
 import { BudgetImplementationRepository } from './activity-log/budget/budget-implementation.repository';
+import { TargetSavingRepository } from 'src/domain/repositories/financial-goal-repositories/target-saving.repository';
+import { CreateTargetSavingUseCase } from 'src/domain/usecases/financial-goal-usecase/target-saving-usecase/commands/create-target-saving.usecase';
+import { GetTargetSavingByUserUseCase } from 'src/domain/usecases/financial-goal-usecase/target-saving-usecase/queries/getUser-target-saving.usecase';
+import { TargetSavingImplementationRepository } from './financial-goal/target-saving/target-saving-implementation.repository';
 
 
 
@@ -49,7 +53,7 @@ export const createTransactionUseCaseProvider = {
 
 const getTransactionUseCaseFactory = 
 (transactionRepo: TransactionRepository) => new GetTransactionByUserUseCase(transactionRepo);
-export const getTransactionUseCaseProvider = {
+export const getTransactionByUserUseCaseProvider = {
     provide: GetTransactionByUserUseCase,
     useFactory: getTransactionUseCaseFactory,
     deps: [TransactionRepository],
@@ -83,6 +87,26 @@ export const getTransactionByCategoryUseCaseProvider = {
 
 
 
+const createTargetSavingUseCaseFactory = 
+(targetSavingRepo: TargetSavingRepository) => new CreateTargetSavingUseCase(targetSavingRepo);
+export const createTargetSavingUseCaseProvider = {
+    provide: CreateTargetSavingUseCase,
+    useFactory: createTargetSavingUseCaseFactory,
+    deps: [TargetSavingRepository],
+};
+
+const getTargetSavingUseCaseFactory = 
+(targetSavingRepo: TargetSavingRepository) => new GetTargetSavingByUserUseCase(targetSavingRepo);
+export const getTargetSavingUseCaseProvider = {
+    provide: GetTargetSavingByUserUseCase,
+    useFactory: getTargetSavingUseCaseFactory,
+    deps: [TargetSavingRepository],
+};
+
+
+
+
+
 const createBudgetUseCaseFactory = 
 (budgetRepo: BudgetRepository) => new CreateBudgetUseCase(budgetRepo);
 export const createBudgetUseCaseProvider = {
@@ -99,6 +123,8 @@ export const getBudgetUseCaseProvider = {
     deps: [BudgetRepository],
 };
 
+
+
 @NgModule({
   declarations: [],
   providers: [
@@ -108,7 +134,7 @@ export const getBudgetUseCaseProvider = {
         { provide: UserRepository, useClass: UserImplementationRepository},
     createTransactionUseCaseProvider,
         {provide: TransactionRepository, useClass: TransactionImplementationRepository},
-    getTransactionUseCaseProvider,
+    getTransactionByUserUseCaseProvider,
         {provide: TransactionRepository, useClass: TransactionImplementationRepository},
     getTransactionByDateUseCaseProvider,
         {provide: TransactionRepository, useClass: TransactionImplementationRepository},
@@ -120,6 +146,10 @@ export const getBudgetUseCaseProvider = {
         {provide: BudgetRepository, useClass: BudgetImplementationRepository},
     getBudgetUseCaseProvider,
         {provide: BudgetRepository, useClass: BudgetImplementationRepository},
+    createTargetSavingUseCaseProvider,
+        {provide: TargetSavingRepository, useClass: TargetSavingImplementationRepository},
+    getTargetSavingUseCaseProvider,
+        {provide: TargetSavingRepository, useClass: TargetSavingImplementationRepository},
   ],
   imports: [
     CommonModule,

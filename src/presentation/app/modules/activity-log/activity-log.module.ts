@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, formatDate } from '@angular/common';
 import { BudgetComponent } from './pages/budget/budget-main/budget.component';
 import { TransactionComponent } from './pages/transaction/transaction-main/transaction.component';
 import { ActivityLogRoutingModule } from './activity-log-routing.module';

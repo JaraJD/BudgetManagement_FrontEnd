@@ -1,8 +1,8 @@
 export interface TargetSavingModel {
     targetSavingId : number,
     idUser : string,
-    startDate : Date,
-    endDate : Date,
+    startDate : string,
+    endDate : string,
     targetAmount : number
     stateSaving : string,
     isDeleted : boolean
