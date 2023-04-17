@@ -1,0 +1,18 @@
+<table class="table table-dark table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Target Month</th>
+        <th scope="col">Amount</th>
+        <th scope="col">State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let budget of budgets">
+        <td>{{budget.name}}</td>
+        <td>{{budget.targetMonth | formatDateMonth }}</td>
+        <td>{{budget.balance}}</td>
+        <td>{{budget.state}}</td>
+      </tr>
+    </tbody>
+  </table>
