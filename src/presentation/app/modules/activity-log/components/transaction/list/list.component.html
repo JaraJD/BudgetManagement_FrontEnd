@@ -4,6 +4,7 @@
         <th scope="col">Date</th>
         <th scope="col">Type</th>
         <th scope="col">Amount</th>
+        <th scope="col">Category</th>
         <th scope="col">Description</th>
       </tr>
     </thead>
@@ -12,6 +13,7 @@
         <td>{{transaction.date | formatDate}}</td>
         <td>{{transaction.type | titlecase}}</td>
         <td>{{transaction.amount}}</td>
+        <td>{{transaction.category.name | titlecase}}</td>
         <td>{{transaction.description | titlecase}}</td>
       </tr>
     </tbody>

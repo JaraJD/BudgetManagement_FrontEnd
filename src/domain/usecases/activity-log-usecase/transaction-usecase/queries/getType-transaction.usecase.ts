@@ -7,7 +7,7 @@ export class GetTransactionByTypeUseCase implements UseCase<{user:string, type:s
 
     constructor(private repository: TransactionRepository){}
 
-    execute(params : {user : string, type : string}): Observable<TransactionModel[]> {
+    execute(params : {user : string | null, type : string}): Observable<TransactionModel[]> {
         return this.repository.GetTransactionByTypeAsync(params);
     }
 

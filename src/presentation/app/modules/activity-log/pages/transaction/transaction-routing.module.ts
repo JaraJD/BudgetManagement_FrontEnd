@@ -3,12 +3,22 @@ import { RouterModule, Routes } from "@angular/router";
 import { TransactionComponent } from "./transaction-main/transaction.component";
 import { ListUserComponent } from "./list-user/list-user.component";
 import { CreateComponent } from "./create/create.component";
+import { ListCategoryComponent } from "./list-category/list-category.component";
+import { ListTypeComponent } from "./list-type/list-type.component";
 
 const routes: Routes = [
     {
       path : '',
       component : TransactionComponent,
       children: [
+        {
+          path: 'listCategory',
+          component: ListCategoryComponent
+        },
+        {
+          path: 'listType',
+          component: ListTypeComponent
+        },
         {
           path: 'list',
           component: ListUserComponent

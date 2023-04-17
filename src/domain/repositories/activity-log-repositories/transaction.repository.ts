@@ -8,7 +8,7 @@ export abstract class TransactionRepository {
     abstract UpdateTransactionAsync( transaction : UpdateTransactionModel) : Observable<string>
     abstract DeleteTransactionAsync( id : number) : Observable<string>
     abstract GetTransactionByIdAsync( user : string | null) : Observable<TransactionModel[]>
-    abstract GetTransactionByDateAsync( params : {user : string, date : string}) : Observable<TransactionModel[]>
-    abstract GetTransactionByTypeAsync( params: {user : string, type : string}) : Observable<TransactionModel[]>
-    abstract GetTransactionByCategoryAsync( params : {user : string, category : number}) : Observable<TransactionModel[]>
+    abstract GetTransactionByDateAsync( params : {user : string | null, date : string}) : Observable<TransactionModel[]>
+    abstract GetTransactionByTypeAsync( params: {user : string | null, type : string}) : Observable<TransactionModel[]>
+    abstract GetTransactionByCategoryAsync( params : {user : string | null, category : number}) : Observable<TransactionModel[]>
 }

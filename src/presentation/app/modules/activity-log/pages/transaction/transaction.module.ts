@@ -7,6 +7,9 @@ import { CreateComponent } from './create/create.component';
 import { ListComponent } from '../../components/transaction/list/list.component';
 import { FormatDatePipe } from '../../pipes/format-date/format-date.pipe';
 import { BudgetRoutingModule } from '../budget/budget-routing.module';
+import { ListCategoryComponent } from './list-category/list-category.component';
+import { ListDateComponent } from './list-date/list-date.component';
+import { ListTypeComponent } from './list-type/list-type.component';
 
 
 
@@ -16,6 +19,9 @@ import { BudgetRoutingModule } from '../budget/budget-routing.module';
     CreateComponent,
     ListComponent,
     FormatDatePipe,
+    ListCategoryComponent,
+    ListDateComponent,
+    ListTypeComponent,
   ],
   imports: [
     CommonModule,
