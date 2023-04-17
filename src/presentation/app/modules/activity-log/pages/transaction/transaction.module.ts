@@ -10,6 +10,7 @@ import { BudgetRoutingModule } from '../budget/budget-routing.module';
 import { ListCategoryComponent } from './list-category/list-category.component';
 import { ListDateComponent } from './list-date/list-date.component';
 import { ListTypeComponent } from './list-type/list-type.component';
+import { UpdateTransactionComponent } from './update-transaction/update-transaction.component';
 
 
 
@@ -22,6 +23,7 @@ import { ListTypeComponent } from './list-type/list-type.component';
     ListCategoryComponent,
     ListDateComponent,
     ListTypeComponent,
+    UpdateTransactionComponent,
   ],
   imports: [
     CommonModule,

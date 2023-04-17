@@ -15,4 +15,7 @@ export class ListComponent {
     this.transactions = new Array<TransactionModel>();
   } 
 
+  capture(transaction: TransactionModel){
+    console.log(transaction);
+  }
 }

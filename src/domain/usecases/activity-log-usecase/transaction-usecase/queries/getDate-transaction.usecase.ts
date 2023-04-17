@@ -7,7 +7,7 @@ export class GetTransactionByDateUseCase implements UseCase<{user:string, date:s
 
     constructor(private repository: TransactionRepository){}
 
-    execute(params : {user : string, date : string}): Observable<TransactionModel[]> {
+    execute(params : {user : string | null, date : string}): Observable<TransactionModel[]> {
         return this.repository.GetTransactionByDateAsync(params);
     }
 

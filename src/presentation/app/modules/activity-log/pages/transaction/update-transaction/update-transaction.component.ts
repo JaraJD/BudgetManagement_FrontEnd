@@ -3,18 +3,19 @@ import { TransactionModel } from 'src/domain/models/activity-log-model/transacti
 import { GetTransactionByUserUseCase } from 'src/domain/usecases/activity-log-usecase/transaction-usecase/queries/getUser-transaction.usecase';
 
 @Component({
-  selector: 'BudgetApp-list-user',
-  templateUrl: './list-user.component.html',
-  styleUrls: ['./list-user.component.scss']
+  selector: 'BudgetApp-update-transaction',
+  templateUrl: './update-transaction.component.html',
+  styleUrls: ['./update-transaction.component.scss']
 })
-export class ListUserComponent {
+export class UpdateTransactionComponent {
   userId : string | null;
 
   transactions : TransactionModel[];
-
+  
+  state : boolean;
 
   constructor(private transactionGet : GetTransactionByUserUseCase){
-
+    this.state = true;
     this.userId = localStorage.getItem('uid');
     this.transactions = new Array<TransactionModel>();
   }
@@ -25,5 +26,5 @@ export class ListUserComponent {
     });
     
   }
-
+  
 }
