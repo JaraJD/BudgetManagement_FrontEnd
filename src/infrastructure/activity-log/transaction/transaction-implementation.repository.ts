@@ -22,7 +22,7 @@ export class TransactionImplementationRepository extends TransactionRepository {
         return this.http.put<string>(`${environment.url_backend_activity}/Transaction`, transaction);
     }
     DeleteTransactionAsync(id: number): Observable<string> {
-        return this.http.delete<string>(`${environment.url_backend_activity}/Transaction?id=${id}`);
+        return this.http.delete<string>(`${environment.url_backend_activity}/Transaction/${id}`);
     }
     GetTransactionByIdAsync(user: string): Observable<TransactionModel[]> {
         return this.http.get<TransactionModel[]>(`${environment.url_backend_activity}/Transaction/${user}`);

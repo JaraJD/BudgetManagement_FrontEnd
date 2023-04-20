@@ -6,17 +6,12 @@ import { CreateComponent } from "./create/create.component";
 import { ListCategoryComponent } from "./list-category/list-category.component";
 import { ListTypeComponent } from "./list-type/list-type.component";
 import { ListDateComponent } from "./list-date/list-date.component";
-import { UpdateTransactionComponent } from "./update-transaction/update-transaction.component";
 
 const routes: Routes = [
     {
       path : '',
       component : TransactionComponent,
       children: [
-        {
-          path: 'update',
-          component: UpdateTransactionComponent
-        },
         {
           path: 'listCategory',
           component: ListCategoryComponent
