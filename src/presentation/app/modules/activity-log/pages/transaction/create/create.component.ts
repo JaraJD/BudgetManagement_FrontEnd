@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreateTransactionModel } from 'src/domain/models/activity-log-model/transaction-model/commands/create-transaction.model';
 import { CreateTransactionUseCase } from 'src/domain/usecases/activity-log-usecase/transaction-usecase/commands/create-transaction.usecase';
+import { DeductBalanceUseCase } from 'src/domain/usecases/user-usecase/balance-usecase/commands/deduct-balance.usecase';
+import { SetBalanceUseCase } from 'src/domain/usecases/user-usecase/balance-usecase/commands/set-balance.usecase';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,7 +19,8 @@ export class CreateComponent {
 
   constructor(private transactionCreate : CreateTransactionUseCase,
               private router: Router,
-              private routeActive: ActivatedRoute,){
+              private deduct : DeductBalanceUseCase,
+              private setAmount : SetBalanceUseCase){
     /* this.transactionToCreate = {
       date : '',
     } */
@@ -50,9 +53,35 @@ export class CreateComponent {
         )
       },
       error:err => console.log(err),
-      complete: () => {console.log('Complete'), this.router.navigate(["/home/activity/transaction/list"]);}
+      complete: () => {
+        console.log('Complete');
+        if(this.transactionForm.get('type')?.value == 'Deposit'){
+          this.setAmountBalance(this.transactionForm.get('amount')?.value)
+        };
+        if(this.transactionForm.get('type')?.value == 'Withdrawal'){
+          this.deductAmountBalance(this.transactionForm.get('amount')?.value)
+        };
+        this.router.navigate(["/home/activity/transaction/list"]);}
     });
     
   }
+
+
+  setAmountBalance(value : number){
+    this.setAmount.execute({balanceId:'643f6f43377ca7c4a290e670',value : value}).subscribe({
+      next: result => console.log(result),
+      error: err => console.log(err),
+      complete: () => {console.log('Complete');}
+    });
+  }
+
+  deductAmountBalance(value: number){
+    this.deduct.execute({balanceId:'643f6f43377ca7c4a290e670',value : value}).subscribe({
+      next: result => console.log(result),
+      error: err => console.log(err),
+      complete: () => {console.log('Complete');}
+    });
+  }
+
 
 }
