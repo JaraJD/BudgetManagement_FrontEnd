@@ -1,6 +1,9 @@
 <div class="container">
-    <h2 class="text-center">
+    <h2 class="text-center" *ngIf="createMode">
         Create Target Saving
+    </h2>
+    <h2 class="text-center" *ngIf="!createMode">
+        Update Target Saving
     </h2>
     <form class="row g-3" id="savingForm" (ngSubmit)="create()" [formGroup]="savingForm">
 
@@ -31,7 +34,10 @@
     
     </form>
 
-    <div class="col-12 ">
+    <div class="col-12 " *ngIf="createMode">
         <button class="btn btn-primary" type="submit" form="savingForm" [disabled]="savingForm.invalid">Create</button>
+    </div>
+    <div class="col-12 " *ngIf="!createMode">
+        <button class="btn btn-primary" [disabled]="savingForm.invalid" (click)="update()">Update</button>
     </div>
 </div>

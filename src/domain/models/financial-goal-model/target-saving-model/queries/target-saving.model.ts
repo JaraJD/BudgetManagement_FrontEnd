@@ -1,5 +1,5 @@
 export interface TargetSavingModel {
-    targetSavingId : number,
+    id : number,
     idUser : string,
     startDate : string,
     endDate : string,

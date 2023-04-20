@@ -23,7 +23,7 @@ export class TargetSavingImplementationRepository extends TargetSavingRepository
         return this.http.put<number>(`${environment.url_backend_financial}/TargetSaving`, saving);
     }
     DeleteTargetSavingAsync(id: number): Observable<number> {
-        return this.http.delete<number>(`${environment.url_backend_financial}/TargetSaving?id=${id}`);
+        return this.http.delete<number>(`${environment.url_backend_financial}/TargetSaving/${id}`);
     }
     GetTargetSavingByIdAsync(user: string | null): Observable<TargetSavingModel[]> {
         return this.http.get<TargetSavingModel[]>(`${environment.url_backend_financial}/TargetSaving/${user}`);

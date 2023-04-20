@@ -1,6 +1,6 @@
 export interface UpdateTargetSavingModel {
     id : number,
-    startDate : Date,
-    endDate : Date,
+    startDate : string,
+    endDate : string,
     targetAmount : number
 }

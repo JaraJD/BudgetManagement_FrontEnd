@@ -18,6 +18,10 @@ const routes: Routes = [
         component: CreateFinancialComponent
       },
       {
+        path: 'update/:id/:state',
+        component: CreateFinancialComponent
+      },
+      {
         path: '**',
         redirectTo: 'home'
       }
