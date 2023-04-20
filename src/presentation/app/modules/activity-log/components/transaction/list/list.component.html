@@ -7,6 +7,7 @@
         <th scope="col">Amount</th>
         <th scope="col">Category</th>
         <th scope="col">Description</th>
+        <th scope="col">Options</th>
       </tr>
     </thead>
     <tbody>
@@ -17,6 +18,17 @@
         <td>{{transaction.amount}}</td>
         <td>{{transaction.category.name | titlecase}}</td>
         <td>{{transaction.description | titlecase}}</td>
+        <td>
+          <button type="button" class="btn btn-primary button-space">
+              <i class="fas fa-list-ul"></i>
+          </button>
+          <button type="button" class="btn btn-primary button-space">
+              <i class="fas fa-pencil-alt"></i>
+          </button>
+          <button type="button" class="btn btn-danger">
+              <i class="fas fa-solid fa-trash"></i>
+          </button>
+      </td>
       </tr>
     </tbody>
   </table>

@@ -25,7 +25,7 @@ export class BudgetImplementationRepository extends BudgetRepository {
         return this.http.put<string>(`${environment.url_backend_activity}/Budget`, budget);
     }
     DeleteBudgetAsync(id: number): Observable<string> {
-        return this.http.delete<string>(`${environment.url_backend_activity}/Budget?id=${id}`);
+        return this.http.delete<string>(`${environment.url_backend_activity}/Budget/Delete/${id}`);
     }
     GetBudgetByIdAsync(user: string | null): Observable<BudgetModel[]> {
         return this.http.get<BudgetModel[]>(`${environment.url_backend_activity}/Budget/${user}`);
@@ -40,7 +40,7 @@ export class BudgetImplementationRepository extends BudgetRepository {
         return this.http.get<BudgetModel[]>(`${environment.url_backend_activity}/Budget/State/${params.user}/${params.state}`);
     }
     SetTotalMonthlyAsync(value: SetTotalBudgetModel): Observable<string> {
-        return this.http.post<string>(`${environment.url_backend_activity}/Budget/SetTotalMonthly`, value);
+        return this.http.put<string>(`${environment.url_backend_activity}/Budget/SetTotalMonthly`, value);
     }
 
 

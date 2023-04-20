@@ -1,6 +1,6 @@
 import { Component, PipeTransform } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CreateTransactionModel } from 'src/domain/models/activity-log-model/transaction-model/commands/create-transaction.model';
 import { CreateTransactionUseCase } from 'src/domain/usecases/activity-log-usecase/transaction-usecase/commands/create-transaction.usecase';
 import Swal from 'sweetalert2';
@@ -15,9 +15,9 @@ export class CreateComponent {
   //transactionToCreate : CreateTransactionModel;
   dates : string = ''
 
-  
-
-  constructor(private transactionCreate : CreateTransactionUseCase, private router: Router){
+  constructor(private transactionCreate : CreateTransactionUseCase,
+              private router: Router,
+              private routeActive: ActivatedRoute,){
     /* this.transactionToCreate = {
       date : '',
     } */
@@ -31,6 +31,7 @@ export class CreateComponent {
       bugetId: new FormControl<number | null>(null)
     });
   }
+
 
   create(){
     const dateActually = new Date (Date.now());

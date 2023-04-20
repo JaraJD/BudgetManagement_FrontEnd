@@ -1,6 +1,8 @@
 <div class="container">
-    <h2 class="text-center">
+    <h2 class="text-center" *ngIf="createMode">
         Create Budget
+    </h2><h2 class="text-center" *ngIf="!createMode">
+        Update Budget
     </h2>
     <form class="row g-3" id="budgetForm" (ngSubmit)="create()" [formGroup]="budgetForm">
 
@@ -19,27 +21,13 @@
                 Target Month required
             </span>
         </div>
-
-    
-        <div class="form-floating mb-1">
-            <input type="number" class="form-control" placeholder="Leave a comment here" id="floatingTextarea" formControlName="balance">
-                <label for="floatingTextarea">Balance </label>
-                <span class="form-text text-danger mensajeAlert" *ngIf="budgetForm.get('balance')?.hasError('required') && budgetForm.get('balance')?.touched ">
-                    Balance required
-                </span>
-        </div>
-    
-        <div class="form-floating mb-1">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea1" formControlName="state"></textarea>
-            <label for="floatingTextarea">State </label>
-            <span class="form-text text-danger mensajeAlert" *ngIf="budgetForm.get('state')?.hasError('required') && budgetForm.get('state')?.touched ">
-                State required
-            </span>
-        </div>
     
     </form>
 
-    <div class="col-12 ">
+    <div class="col-12 " *ngIf="createMode">
         <button class="btn btn-primary" type="submit" form="budgetForm" [disabled]="budgetForm.invalid">Create</button>
+    </div>
+    <div class="col-12 " *ngIf="!createMode">
+        <button class="btn btn-primary" [disabled]="budgetForm.invalid" (click)="update()">Update</button>
     </div>
 </div>

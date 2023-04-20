@@ -33,8 +33,11 @@
           {{user}}
         </button>
         <div class="collapse" id="account-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" *ngFor="let item of balance">
+            <li><a class="d-inline-flex text-decoration-none rounded">{{item.name}} : {{ item.amount }}</a></li>
+          </ul>
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a class="d-inline-flex text-decoration-none rounded">New...</a></li>
+            <li><a class="pointer d-inline-flex text-decoration-none rounded " routerLink="createBalance">New...</a></li>
           </ul>
         </div>
       </li>

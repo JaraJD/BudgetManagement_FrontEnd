@@ -6,6 +6,7 @@ import { BudgetRoutingModule } from './budget-routing.module';
 import { ListBudgetComponent } from '../../components/Budget/list-budget/list-budget.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormatDateMonthPipe } from '../../pipes/format-date-month/format-date-month.pipe';
+import { CreateBudgetExpenseComponent } from './create-budget-expense/create-budget-expense.component';
 
 
 
@@ -14,7 +15,8 @@ import { FormatDateMonthPipe } from '../../pipes/format-date-month/format-date-m
     ListBudgetUserComponent,
     CreateBudgetComponent,
     ListBudgetComponent,
-    FormatDateMonthPipe
+    FormatDateMonthPipe,
+    CreateBudgetExpenseComponent,
   ],
   imports: [
     CommonModule,

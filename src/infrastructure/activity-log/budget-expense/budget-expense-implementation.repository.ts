@@ -23,10 +23,10 @@ export class BudgetExpenseImplementationRepository extends BudgetExpenseReposito
         return this.http.put<string>(`${environment.url_backend_activity}/BudgetExpense`, budget);
     }
     override DeleteBudgetExpenseAsync(id: number): Observable<string> {
-        return this.http.delete<string>(`${environment.url_backend_activity}/BudgetExpense?id=${id}`);
+        return this.http.delete<string>(`${environment.url_backend_activity}/BudgetExpense/${id}`);
     }
     override GetBudgetExpenseByIdAsync(id: number | null): Observable<BudgetExpenseModel[]> {
-        return this.http.get<BudgetExpenseModel[]>(`${environment.url_backend_activity}/BudgetExpense?budgetId=${id}`);
+        return this.http.get<BudgetExpenseModel[]>(`${environment.url_backend_activity}/BudgetExpense/${id}`);
     }
     
 }

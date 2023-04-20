@@ -1,0 +1,84 @@
+<div class="container text-center">
+    <div class="row">
+
+
+      <div class="col">
+        <div class="container">
+            <h2 class="text-center">
+                Add Budget Expense
+            </h2>
+            <form class="row g-3" id="budgetForm" (ngSubmit)="create()" [formGroup]="budgetExpenseForm">
+        
+
+                <div class="form-floating mb-1">
+                    <input type="number" class="form-control" placeholder="Leave a comment here" id="floatingTextarea" formControlName="amount">
+                        <label for="floatingTextarea">Amount </label>
+                        <span class="form-text text-danger mensajeAlert" *ngIf="budgetExpenseForm.get('amount')?.hasError('required') && budgetExpenseForm.get('amount')?.touched ">
+                            Amount required
+                        </span>
+                </div>
+
+                <div class="form-floating mb-1">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea1" formControlName="description"></textarea>
+                    <label for="floatingTextarea">Description </label>
+                    <span class="form-text text-danger mensajeAlert" *ngIf="budgetExpenseForm.get('description')?.hasError('required') && budgetExpenseForm.get('description')?.touched ">
+                        Description required
+                    </span>
+                </div>
+        
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="categoryId">
+                    
+                    <option value="1">Travel</option>
+                    <option value="2">Health</option>
+                    <option value="3">Feeding</option>
+                    <option value="4">Transaportation</option>
+                    <option value="5">Education</option>
+                    <option value="7">Home</option>
+                    <option value="9">Unforseen</option>
+                    <option value="10">Others</option>
+                    </select>
+                    <label for="floatingSelect">Select category</label>
+                    <span class="form-text text-danger mensajeAlert" *ngIf="budgetExpenseForm.get('categoryId')?.hasError('required') && budgetExpenseForm.get('categoryId')?.touched ">
+                        Category Required
+                    </span>
+                </div>
+            
+            </form>
+        
+            <div class="col-12 ">
+                <button class="btn btn-primary" type="submit" form="budgetForm" [disabled]="budgetExpenseForm.invalid">Add</button>
+            </div>
+        </div>
+      </div>
+
+
+      <div class="col">
+        <table class="table table-sm">
+            <thead>
+              <tr class="table-dark">
+                <th scope="col">Amount</th>
+                <th scope="col">Description</th>
+                <th scope="col">Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let budget of budgetList; let i = index">
+                <td class="table-light">{{budget.amount}}</td>
+                <td class="table-light">{{budget.description}}</td>
+                <td class="table-light">
+                  <button type="button" class="btn btn-outline-danger button-space" (click)="remove(budget.id, budget.amount, i)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle " viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+
+
+    </div>
+  </div>

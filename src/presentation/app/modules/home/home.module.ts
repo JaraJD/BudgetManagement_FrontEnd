@@ -5,6 +5,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { CreateBalanceComponent } from './pages/user/balance/create-balance/create-balance.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,10 +15,13 @@ import { HomeRoutingModule } from './home-routing.module';
     MainHomeComponent,
     FooterComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    CreateBalanceComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     HomeRoutingModule
   ]
 })

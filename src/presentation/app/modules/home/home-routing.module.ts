@@ -1,12 +1,17 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { MainHomeComponent } from "./pages/main-home/main-home.component";
+import { CreateBalanceComponent } from "./pages/user/balance/create-balance/create-balance.component";
 
 const routes: Routes = [
   {
     path : '',
     component : MainHomeComponent,
     children: [
+      {
+        path : 'createBalance',
+        component : CreateBalanceComponent,
+      },
       {
         path: 'activity', // localhost:4200/home/activity
         loadChildren: () =>

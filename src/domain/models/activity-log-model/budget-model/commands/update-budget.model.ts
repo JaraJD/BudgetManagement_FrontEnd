@@ -1,7 +1,7 @@
 export interface UpdateBudgetModel {
     id : number,
-    name : string,
-    targetMonth : Date,
+    name : string | null,
+    targetMonth : string,
     balance : number,
-    state : string
+    state : string | null
 }

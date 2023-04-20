@@ -6,6 +6,6 @@ export interface BudgetModel {
     balance: number,
     monthlyTotal: number,
     state: string,
-    budgetExpense: BudgetExpenseModel,
+    budgetExpense?: BudgetExpenseModel,
 
 }

@@ -7,7 +7,7 @@ export class UdpateBudgetUseCase implements UseCase<UpdateBudgetModel, string>{
 
     constructor(private repository: BudgetRepository){}
 
-    execute(budget: UpdateBudgetModel): Observable<string> {
+    execute(budget : UpdateBudgetModel): Observable<string> {
         return this.repository.UpdateBudgetAsync(budget);
     }
 
