@@ -1,9 +1,9 @@
 export interface CreateTransactionModel {
-    date: Date,
+    date: string,
     type: string,
     amount: number,
     description: string,
-    userId: string,
+    userId: string | null,
     categoryId: number,
     budgetId: number,
 

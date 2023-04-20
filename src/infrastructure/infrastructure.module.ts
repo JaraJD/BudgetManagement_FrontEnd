@@ -34,8 +34,6 @@ import { GetBalanceUseCase } from 'src/domain/usecases/user-usecase/balance-usec
 import { DeleteBalanceUseCase } from 'src/domain/usecases/user-usecase/balance-usecase/commands/delete-balance.usecase';
 import { UpdateBalanceUseCase } from 'src/domain/usecases/user-usecase/balance-usecase/commands/update-balance.usecase';
 import { ResetBalanceUseCase } from 'src/domain/usecases/user-usecase/balance-usecase/commands/reset-balance.usecase';
-import { SetBalanceUseCase } from 'src/domain/usecases/user-usecase/balance-usecase/commands/deduct-balance.usecase';
-import { DeductBalanceUseCase } from 'src/domain/usecases/user-usecase/balance-usecase/commands/set-balance.usecase';
 import { GetBudgetByDateUseCase } from 'src/domain/usecases/activity-log-usecase/budget-usecase/queries/getDate-budget.usecase';
 import { GetBudgetByNameUseCase } from 'src/domain/usecases/activity-log-usecase/budget-usecase/queries/getName-budget.usecase';
 import { GetBudgetByStateUseCase } from 'src/domain/usecases/activity-log-usecase/budget-usecase/queries/getState-budget.usecase';
@@ -46,6 +44,8 @@ import { GetTargetSavingByStateUseCase } from 'src/domain/usecases/financial-goa
 import { DeleteTargetSavingUseCase } from 'src/domain/usecases/financial-goal-usecase/target-saving-usecase/commands/delete-target.saving.usecase';
 import { BalanceImplementationRepository } from './user/balance/balance-implementation.repository';
 import { BudgetExpenseImplementationRepository } from './activity-log/budget-expense/budget-expense-implementation.repository';
+import { SetBalanceUseCase } from 'src/domain/usecases/user-usecase/balance-usecase/commands/set-balance.usecase';
+import { DeductBalanceUseCase } from 'src/domain/usecases/user-usecase/balance-usecase/commands/deduct-balance.usecase';
 
 
 //--------------USER--------------------------------------

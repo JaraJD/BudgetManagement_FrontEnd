@@ -2,9 +2,11 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { UpdateBudgetModel } from 'src/domain/models/activity-log-model/budget-model/commands/update-budget.model';
 import { BudgetModel } from 'src/domain/models/activity-log-model/budget-model/queries/budget.model';
+import { CreateTransactionModel } from 'src/domain/models/activity-log-model/transaction-model/commands/create-transaction.model';
 import { DeleteBudgetUseCase } from 'src/domain/usecases/activity-log-usecase/budget-usecase/commands/delete-budget.usecase';
 import { UdpateBudgetUseCase } from 'src/domain/usecases/activity-log-usecase/budget-usecase/commands/update-budget.usecase';
-import { DeductBalanceUseCase } from 'src/domain/usecases/user-usecase/balance-usecase/commands/set-balance.usecase';
+import { CreateTransactionUseCase } from 'src/domain/usecases/activity-log-usecase/transaction-usecase/commands/create-transaction.usecase';
+import { DeductBalanceUseCase } from 'src/domain/usecases/user-usecase/balance-usecase/commands/deduct-balance.usecase';
 import Swal from 'sweetalert2';
 
 
@@ -22,7 +24,9 @@ export class ListBudgetComponent {
   constructor(private router: Router,
               private budgetUpdate : UdpateBudgetUseCase,
               private deleteUpdate : DeleteBudgetUseCase,
-              private deduct : DeductBalanceUseCase){
+              private deduct : DeductBalanceUseCase,
+              private transactionCreate : CreateTransactionUseCase
+              ){
 
     this.budgetToUpdate = {
       id : 0,
@@ -71,13 +75,15 @@ export class ListBudgetComponent {
             )
           },
           error: err => console.log(err),
-          complete: () => {console.log('Complete'), this.budgets[index].state = 'Done', this.deductBalance(localStorage.getItem('uid'), this.budgets[index].monthlyTotal);}
+          complete: () => {
+            console.log('Complete'),
+            this.budgets[index].state = 'Done',
+            this.deductBalance(this.budgets[index].monthlyTotal),
+            this.resgisterTransaction(this.budgets[index].monthlyTotal, this.budgets[index].name, this.budgets[index].id);}
         });
       }
     });
 
-    
-    
   }
 
 
@@ -112,8 +118,34 @@ export class ListBudgetComponent {
   }
 
 
-  deductBalance(id: string | null, value: number){
-    console.log(id, value);
+  deductBalance(value: number){
+    this.deduct.execute({balanceId:'643f6f43377ca7c4a290e670',value : value}).subscribe({
+      next: result => console.log(result),
+      error: err => console.log(err),
+      complete: () => {console.log('Complete');}
+    });
+  }
+
+
+  resgisterTransaction(amount : number, name : string, id : number){
+    const dateActually = new Date (Date.now());
+
+    const transactionToCreate : CreateTransactionModel = {
+      date : dateActually.toJSON(),
+      type : 'Payment',
+      amount : amount,
+      description : `Pay of ${name}`,
+      userId : localStorage.getItem('uid'),
+      categoryId : 11,
+      budgetId : id
+    }
+    console.log(transactionToCreate);
+
+    this.transactionCreate.execute(transactionToCreate).subscribe({
+      next: transaction =>console.log(transaction),
+      error:err => console.log(err),
+      complete: () => {console.log('Complete');}
+    });
   }
   
 }
