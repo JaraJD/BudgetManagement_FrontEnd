@@ -1,1 +1,8 @@
-<BudgetApp-list [transactions]="transactions"></BudgetApp-list>
+<BudgetApp-input
+    (onValue)="searchByType($event)"
+    placeholder="Search by date...">
+</BudgetApp-input>
+
+<hr>
+
+<BudgetApp-list [transactions]="transactions" *ngIf="transactions.length > 0"></BudgetApp-list>

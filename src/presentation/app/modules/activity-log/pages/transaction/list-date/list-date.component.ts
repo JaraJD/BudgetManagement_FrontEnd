@@ -18,10 +18,17 @@ export class ListDateComponent {
   }
 
   ngOnInit(): void {
-    this.transactionGet.execute({user : this.userId, date : "2023-04-17"}).subscribe({
+    /* this.transactionGet.execute({user : this.userId, date : "2023-04-17"}).subscribe({
+      next: transaction => (this.transactions = transaction, console.log(transaction))
+    }); */
+    
+  }
+
+  searchByType( term : string):void {
+    console.log({term});
+    this.transactionGet.execute({user : this.userId, date : term}).subscribe({
       next: transaction => (this.transactions = transaction, console.log(transaction))
     });
-    
   }
 
 }
