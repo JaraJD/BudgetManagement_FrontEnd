@@ -1,1 +1,32 @@
-<BudgetApp-list [transactions]="transactions"></BudgetApp-list>
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col-8">
+                <form class="row" id="tareaForm" (ngSubmit)="search()" [formGroup]="transactionForm">
+                    <div class="form-floating">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="category">
+                            <option value="1">Travel</option>
+                            <option value="2">Health</option>
+                            <option value="3">Feeding</option>
+                            <option value="4">Transaportation</option>
+                            <option value="5">Education</option>
+                            <option value="7">Home</option>
+                            <option value="9">Unforseen</option>
+                            <option value="10">Others</option>
+                        </select>
+                        <label for="floatingSelect">Select category</label>
+                    </div>
+                </form>
+        </div>
+        <div class="col-4 ">
+            <button class="btn btn-dark w-100" type="submit" form="transactionForm" [disabled]="transactionForm.invalid" (click)="search()">
+                search
+            </button>
+        </div>
+    </div>
+    
+</div>
+
+<hr>
+
+<BudgetApp-list [transactions]="transactions" *ngIf=" transactions.length > 0"></BudgetApp-list>
